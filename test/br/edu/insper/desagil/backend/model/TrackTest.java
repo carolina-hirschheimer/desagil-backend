@@ -2,66 +2,104 @@ package br.edu.insper.desagil.backend.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TrackTest {
+	
 	@BeforeEach
 	void setUp() {
+		
 	}
 
 	@Test
 	void testZeroSeconds() {
-		assertEquals(true, false);
+		Artist olivia = new Artist("Olivia Rodrigo");
+		Track traitor = new Track(olivia, "traitor", 0);
+		assertEquals("0:00", traitor.getDurationString());
 	}
 
 	@Test
 	void testFiveSeconds() {
-		assertEquals(true, false);
+		Artist olivia = new Artist("Olivia Rodrigo");
+		Track traitor = new Track(olivia, "traitor", 5);
+		assertEquals("0:05", traitor.getDurationString());
 	}
 
 	@Test
 	void testTwentyFiveSeconds() {
-		assertEquals(true, false);
+		Artist olivia = new Artist("Olivia Rodrigo");
+		Track traitor = new Track(olivia, "traitor", 25);
+		assertEquals("0:25", traitor.getDurationString());
 	}
 
 	@Test
 	void testOneMinuteZeroSeconds() {
-		assertEquals(true, false);
+		Artist olivia = new Artist("Olivia Rodrigo");
+		Track traitor = new Track(olivia, "traitor", 60);
+		assertEquals("1:00", traitor.getDurationString());
 	}
 
 	@Test
 	void testOneMinuteFiveSeconds() {
-		assertEquals(true, false);
+		Artist olivia = new Artist("Olivia Rodrigo");
+		Track traitor = new Track(olivia, "traitor", 65);
+		assertEquals("1:05", traitor.getDurationString());
 	}
 
 	@Test
 	void testOneMinuteTwentyFiveSeconds() {
-		assertEquals(true, false);
+		Artist olivia = new Artist("Olivia Rodrigo");
+		Track traitor = new Track(olivia, "traitor", 85);
+		assertEquals("1:25", traitor.getDurationString());
 	}
 
 	@Test
 	void testTwoMinutesZeroSeconds() {
-		assertEquals(true, false);
+		Artist olivia = new Artist("Olivia Rodrigo");
+		Track traitor = new Track(olivia, "traitor", 120);
+		assertEquals("2:00", traitor.getDurationString());
 	}
 
 	@Test
 	void testTwoMinutesFiveSeconds() {
-		assertEquals(true, false);
+		Artist olivia = new Artist("Olivia Rodrigo");
+		Track traitor = new Track(olivia, "traitor", 125);
+		assertEquals("2:05", traitor.getDurationString());
 	}
 
 	@Test
 	void testTwoMinutesTwentyFiveSeconds() {
-		assertEquals(true, false);
+		Artist olivia = new Artist("Olivia Rodrigo");
+		Track traitor = new Track(olivia, "traitor", 145);
+		assertEquals("2:25", traitor.getDurationString());
 	}
 
 	@Test
 	void testOneCollaborator() {
-		assertEquals(true, false);
+		Artist anitta = new Artist("Anitta");
+		Artist becky = new Artist("Becky G");
+		Track track = new Track(anitta, "track", 120);
+		List<Artist> collaborators = new ArrayList<>();
+		collaborators.add(becky);
+		CollaborationTrack colab = new CollaborationTrack (track.getArtist(),track.getName(), track.getDuration(),collaborators);
+		assertEquals("Anitta (feat. Becky G)", colab.getFullArtistName());
 	}
 
 	@Test
 	void testTwoCollaborators() {
-		assertEquals(true, false);
+		Artist anitta = new Artist("Anitta");
+		Artist ludmila = new Artist("Ludmilla");
+		Artist snoop = new Artist("Snoop Dog");
+		Track track = new Track(anitta, "track", 120);
+		List<Artist> collaborators = new ArrayList<>();
+		collaborators.add(ludmila);
+		collaborators.add(snoop);
+		CollaborationTrack colab = new CollaborationTrack (track.getArtist(),track.getName(), track.getDuration(),collaborators);
+		assertEquals("Anitta (feat. Ludmilla, Snoop Dog)", colab.getFullArtistName());
 	}
+
 }
